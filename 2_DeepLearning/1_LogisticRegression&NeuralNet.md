@@ -2,7 +2,7 @@
 
 本篇通过将逻辑回归看做一个简单的神经网络，介绍参数初始化，前向传播，损失函数与代价函数，反向传播及参数更新等步骤，并扩展到多层的前馈神经网络。
 
-## 内容：
+## 本篇内容：
 
 - 符号约定
 - 什么是逻辑回归。
@@ -10,7 +10,7 @@
 - 什么是前馈神经网络。
 - Python3代码实现前馈神经网络。
 
-## 符号约定：
+## 1、符号约定
 
 - $w$ 表示权重，$b$ 表示偏置。
 - $x$ 表示输入特征，$y$表示输出标签。
@@ -23,9 +23,20 @@
 - 下标 $i$ 表示一个向量中的第 $i$ 维的数值。
   - 例如: $a^{[l]}_i$ 表示第 $l$ 层的激活值中的第 $i$ 维的数值。
 
-## 什么是逻辑回归：
+## 2、什么是逻辑回归
 
-## 逻辑回归实现步骤：
+我们先来回忆一下高中学过的线性回归：$z = w_0 + w_1 x_1 + ... + w_p x_p$，其中 $x = (x_1,..., x_p)$ 称为输入变量，$w = (w_1,..., w_p)$ 称为权重，$b = w_0$ 称为偏置。$\hat{y} = z$ 是输入变量 $x$ 经过上述线性回归模型后输出的预测值，而该输入变量的真实值表示为y。$p$ 是输入的维度，$m$ 则是输入样本的数量，第 $i$ 个样本用 $x^{(i)}$ 来表示。$\hat{y}^{(i)} = z^{(i)}$ 表示第 $i$ 个样本的预测值。我们对单个样本定义损失函数的概念: $\mathcal{L}(z^{(i)}, y^{(i)}) = a$那对这第 $i$ 个样本来说，它的损失函数值就是那线性回归的过程就是要找出一组 $w, b$ 参数，使得 $\sum_{i=1}^{m}z(x^{i}) - y$ 把这个$\min_{\rm w} {|| X w - y||_2}^2$  
+
+![avatar](https://raw.githubusercontent.com/Vince1359/My-Path-to-AI/master/images/Chapter2_Article1_image1.png)
+
+线性回归的过程大概分为一下几个步骤：
+
+- 1、
+- 2
+
+## 3、用代码实现逻辑回归
+
+### 3.1 逻辑回归实现步骤
 
 - 建立完整的逻辑回归算法流程：
   - 确立模型的结构，如输入的维度。
@@ -36,7 +47,7 @@
     - 更新参数（梯度下降法）。
 - 用函数实现上述算法流程中各部分的功能，并最后整合到一个model函数中。
 
-**逻辑回归核心数学表达式**：
+### 3.2 逻辑回归核心数学表达式
 
 对于一个训练例子 $x^{(i)}$：
 
@@ -54,7 +65,7 @@ $$ J = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(a^{(i)}, y^{(i)})\tag{4}$$
 $$ \frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T\tag{5}$$
 $$ \frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)})\tag{6}$$
 
-## Python代码实现逻辑回归
+### 3.3 用Python代码实现逻辑回归
 
 - 实现sigmoi函数：$sigmoid(Z) = \frac{1}{1 + e^{-(Z)}}$
 
@@ -228,9 +239,11 @@ def model_logistic(X_train, Y_train, X_test, Y_test, num_iterations=2000, learni
     return d
 ```
 
-## 什么是前馈神经网络
+## 4、什么是前馈神经网络
 
-## 前馈神经网络实现步骤：
+## 5、用代码实现前馈神经网络
+
+### 5.1 前馈神经网络实现步骤：
 
 - 建立完整的前馈神经网络算法流程：
   - 确立模型的结构，如神经网络隐藏层数量，每层的神经元数量等。
@@ -250,7 +263,7 @@ def model_logistic(X_train, Y_train, X_test, Y_test, num_iterations=2000, learni
   - 更新模型参数。
 - 用函数实现上述算法流程中各部分的功能，并最后整合到一个model函数中。
 
-**前馈神经网络核心数学表达式**：
+### 5.2 前馈神经网络核心数学表达式：
 
 对于一批训练例子，使用向量化的方式实现，输入为 $X$：
 
@@ -285,7 +298,7 @@ $$ b^{[l]} = b^{[l]} - \alpha \text{ } db^{[l]} \tag{18}$$
 
 其中 $\alpha$ 是学习率。
 
-## Python代码实现前馈神经网络
+### 5.3 Python代码实现前馈神经网络
 
 - 实现两个激活函数sigmoid和relu及其反向传播函数sigmoid_backward与relu_backward
 
@@ -558,3 +571,11 @@ def L_layer_model(X, Y, layers_dims, learning_rate = 0.0075, num_iterations = 30
 
     return parameters
 ```
+
+## 6、小结
+
+## 7、参考资料
+
+- Andrew Ng's Deep Learning Specialization: Neural Networks and Deep Learning
+- Machine Learning in Action
+- Hands-On Machine Learning with Scikit-Learn & TensorFlow
